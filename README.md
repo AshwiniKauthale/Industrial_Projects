@@ -1,4 +1,4 @@
-       <h1>File Packer Unpacker</h1>
+       # File Packer Unpacker
         
         This project is used to perform process monitoring activity. - By using this project we can fetch  
         data from all files and merge it into one file. As well as we can also extract all packed file      
@@ -53,5 +53,5 @@
         
         Main purpose of this project is to merge large amount of files into one file by avoiding 
         memory wastage.  
-We also provide data security by using the concept of Encryption.  
-For next level data security we add MD5 Checksum check and Primary header check. 
+        We also provide data security by using the concept of Encryption.  
+        For next level data security we add MD5 Checksum check and Primary header check. 
