@@ -1,0 +1,60 @@
+-------------------------------------------------------------------------------
+--------------------------Ashwini CVSF Help Page----------------------------
+-------------------------------------------------------------------------------
+
+man : It is used to display manual page.
+
+clear : It is used to clear the terminal.
+
+creat : It is used to create new file.
+
+write : It is used to write the data into the file.
+
+read : It is used to read the data from the file.
+
+stat : It is used to display statistical information.
+
+unlink : It is used to delete the file.
+
+exit : It is used to terminate marvellous CVSF.
+
+close : It is used to close an open file.
+
+open : It is used to open an existing file.
+
+lseek : It is used to reposition the read/write file offset of an open file.
+
+chmod : It is used to change the permissions of file.
+
+ls : Displays the contents of the current working directory or a specified path.
+
+ls - l : It is used to display a detailed, "long" listing of the contents of a directory.
+
+ls - a : do not ignore entries starting with.
+
+rm : It is used to delete files and directories permanently from the file system.
+
+cat : It is used to displays file contents.
+
+cd : It is used to navigate between directories in the file system.
+
+df : It is used to display the amount of available and used disk space on mounted file systems. 
+
+find : It is used to  used to search for files and directories based on name, type, size, date, or other conditions.
+
+grep : grep searches for patterns in each FILE.
+
+in: It is allows you to create links between files. These links can either be hard links or soft (symbolic) links.
+
+mkdir : Create the DIRECTORY(ies), if they do not already exist.
+
+pwd: Print the full filename of the current working directory.
+
+touch : Update the access and modification times of each FILE to the current time".
+
+
+uname : Print certain system information.
+
+mkfs : mkfs is used to build a Linux filesystem on a device, usually a hard disk partition.
+
+-------------------------------------------------------------------------------
