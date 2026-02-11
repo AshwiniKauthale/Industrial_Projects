@@ -43,3 +43,16 @@ Windows NT platform
 ◦ Built on Spring Boot architecture, allowing easy integration with future 
 features (attendance, performance tracking, fee management).
 
+## Client Application Menu
+
+### ====== Edu Track Portal ======
+1. Create New Batch
+2. View All Batches
+3. Update Batch Information
+4. Delete Batch
+5. Add Student to Batch
+6. View Students in Batch
+7. Exit
+
+   
+
