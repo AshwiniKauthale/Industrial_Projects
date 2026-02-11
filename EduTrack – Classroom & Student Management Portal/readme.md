@@ -17,7 +17,9 @@ Windows NT platform
 
 ### Technology used
 • Backend: Java, Spring Boot 
+
 • Database: MongoDB (NoSQL) 
+
 • Frontend: Java-based client application 
 
 ## Key Features  
