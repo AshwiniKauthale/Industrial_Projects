@@ -38,6 +38,9 @@ C++ Programming
 
 ### Learning Outcomes
 • Mastery of C++ Object-Oriented Programming (OOP) principles. 
+
 • Strong foundation in linear data structures. 
+
 • Implementation of generic programming with templates. 
+
 • Experience in designing reusable libraries for software development.
