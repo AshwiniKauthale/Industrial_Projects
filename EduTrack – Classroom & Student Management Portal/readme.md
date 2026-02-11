@@ -26,10 +26,12 @@ Windows NT platform
 
 ### Batch Management 
 ◦ Create, update, delete, and view batches. 
+
 ◦ Store details such as batch name, schedule, duration, and trainer info.
 
 ### Student Records 
 ◦ Maintain student details (name, contact, enrollment date, assigned batch). 
+
 ◦ Link students dynamically with their respective batch. 
 
 ### CRUD Operations
