@@ -36,7 +36,7 @@ C++ Programming
 #### Library Format
 ◦ Designed as a reusable C++ library that can be linked with client applications. 
 
-###Learning Outcomes
+### Learning Outcomes
 • Mastery of C++ Object-Oriented Programming (OOP) principles. 
 • Strong foundation in linear data structures. 
 • Implementation of generic programming with templates. 
