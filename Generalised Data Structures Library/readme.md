@@ -21,7 +21,7 @@ C++ Programming
 ### Key Features   
 
 #### Linear Data Structure
-◦ Singly Linear Linked List 
+##### ◦ Singly Linear Linked List 
 ◦ Singly Circular Linked List 
 ◦ Doubly Linear Linked List 
 ◦ Doubly Circular Linked List 
