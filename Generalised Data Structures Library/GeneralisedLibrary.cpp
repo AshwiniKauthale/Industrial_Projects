@@ -14,6 +14,13 @@ Doubly Circuler         DoublyCLLnode                            DoublyCLL      
 Stack                   Stacknode                                Stack               Done
 Queue                   Queuenode                                Queue               Done
 BST                     BSTnode                                  BinarySearchTree    Done
+Linar Search               -                                     ArrayX              Done
+Bidirectional Search       -                                     ArrayX              Done
+Binary Search              -                                     ArrayX              Done
+Bubble Sort                -                                     ArrayXX             Done
+Efficient Bubble Sort      -                                     ArrayXX             Done
+Insertion Sort             -                                     ArrayXX             Done
+Selection Sort             -                                     ArrayXX             Done
 ----------------------------------------------------------------------------------------------------
 */
 
@@ -1081,7 +1088,6 @@ class DoublyCLL
 template<class T>
 DoublyCLL<T>::DoublyCLL()
 {
-    cout<<"Linked list gets created.\n";
     this->first = NULL;
     this->last = NULL;
     this->iCount = 0;
@@ -2779,7 +2785,7 @@ int main()
     cout<<"Enter the number of elements : \n";
     cin>>iVal;
 
-    ArrayXX <int> *sortobj = new ArrayXX<int>(iVal);
+    ArrayXX <float> *sortobj = new ArrayXX<float>(iVal);
 
     sortobj->Accept();
 
