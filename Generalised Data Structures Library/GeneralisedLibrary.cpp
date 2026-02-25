@@ -13,6 +13,7 @@ Doubly Linear           DoublyLLLnode                            DoublyLLL      
 Doubly Circuler         DoublyCLLnode                            DoublyCLL           Done
 Stack                   Stacknode                                Stack               Done
 Queue                   Queuenode                                Queue               Done
+BST                     BSTnode                                  BinarySearchTree    Done
 ----------------------------------------------------------------------------------------------------
 */
 
@@ -1625,6 +1626,822 @@ int Queue<T> :: Count()
     return this->iCount;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+//    Binary Srarch Tree using Generic Approach
+///////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+class BSTnode
+{
+    public:
+        T data;
+        BSTnode<T> *lchild;
+        BSTnode<T> *rchild;
+
+        BSTnode(T no)
+        {
+            this->data = no;
+            this->lchild = NULL;
+            this->rchild = NULL;
+        }
+};
+
+template<class T>
+class BinarySearchTree
+{
+    private:
+        int iCount;
+        BSTnode <T>*first = NULL;
+
+    public:
+        BinarySearchTree();
+        void Insert(T);
+        
+        void Inorder();
+        void Preorder();
+        void Postorder();
+
+        void InorderR(BSTnode<T>*);
+        void PreorderR(BSTnode<T>*);
+        void PostorderR(BSTnode<T>*);
+
+        int Count();
+        int CountParentR(BSTnode<T>*);
+        int CountLeafR(BSTnode<T>*);
+
+        int CountParentBSTnode();
+        int CountChildBSTnode();
+};
+
+template<class T>
+BinarySearchTree <T> :: BinarySearchTree()
+{
+    this->iCount = 0;
+    this->first =NULL;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Insert
+//    Input :            Data of the node
+//    Output :           Nothing
+//    Description :      Use to Insert the node into BST
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree <T>:: Insert(T no)
+{
+    BSTnode <T>*newn = NULL;
+    BSTnode <T>*temp = NULL;
+
+    newn = new BSTnode<T>(no);
+
+    if(this->first == NULL)
+    {
+        this->first = newn;
+        this->iCount++;
+    }
+    else
+    {
+        temp = this->first;
+        while(1)
+        {
+            if(no > temp->data)
+            {
+                if(temp->rchild == NULL)
+                {
+                    temp->rchild = newn;
+                    iCount++;
+                    break;
+                }
+
+                temp = temp->rchild;
+            }
+            else if(no < temp->data)
+            {
+                if(temp->lchild == NULL)
+                {
+                    temp->lchild = newn;
+                    iCount++;
+                    break;
+                }
+
+                temp = temp->lchild;
+            }
+            else if(no == temp->data)
+            {
+                cout<<"Unable to insert as element is duplicate\n";
+                delete(newn);
+                break;
+            }
+        }
+    }
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Inorder
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      It internally call InorderR Function
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::Inorder()
+{
+    InorderR(first);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    InorderR
+//    Input :            Base Address of root node
+//    Output :           Nothing
+//    Description :      Use to display nodes in Inorder
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::InorderR(BSTnode<T>* temp)
+{
+    if(temp != NULL)
+    {
+        InorderR(temp->lchild);
+        cout<<temp->data<<" ";
+        InorderR(temp->rchild);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Preorder
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      It internally call PreorderR Function
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::Preorder()
+{
+    PreorderR(first);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    PreorderR
+//    Input :            Base Address of root node
+//    Output :           Nothing
+//    Description :      Use to display nodes in Preorder
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::PreorderR(BSTnode<T>* temp)
+{
+    if(temp != NULL)
+    {
+        cout<<temp->data<<" ";
+        PreorderR(temp->lchild);
+        PreorderR(temp->rchild);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Postorder
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      It internally call PostorderR Function
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::Postorder()
+{
+    PostorderR(first);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    PostorderR
+//    Input :            Base Address of root node
+//    Output :           Nothing
+//    Description :      Use to display nodes in Postorder
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void BinarySearchTree<T>::PostorderR(BSTnode<T>* temp)
+{
+    if(temp != NULL)
+    {
+        PostorderR(temp->lchild);
+        PostorderR(temp->rchild);
+        cout<<temp->data<<" ";
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Count
+//    Input :            Nothing
+//    Output :           It return Integer Value
+//    Description :      Use to count the number of nodes from the BST
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int BinarySearchTree <T>:: Count()
+{
+    return this->iCount;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    CountParentBSTnode
+//    Input :            Nothing
+//    Output :           Integer value
+//    Description :      It internally call CountParentR
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int BinarySearchTree<T>::CountParentBSTnode()
+{
+    return CountParentR(first);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    CountParentR
+//    Input :            Base Address of root node
+//    Output :           Integer value
+//    Description :      Use to count number of parent nodes form BST
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int BinarySearchTree<T>::CountParentR(BSTnode<T>* temp)
+{
+    if(temp == NULL)
+    {
+        return 0;
+    }
+
+    int count = 0;
+
+    if(temp->lchild != NULL || temp->rchild != NULL)
+    {
+        count = count +1;
+    }
+
+    return count + CountParentR(temp->lchild) + CountParentR(temp->rchild);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    CountChildBSTnode
+//    Input :            Nothing
+//    Output :           Integer Count
+//    Description :      It internally call CountLeafR
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int BinarySearchTree<T>::CountChildBSTnode()
+{
+    return CountLeafR(first);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    CountLeafR
+//    Input :            Base Address of root node
+//    Output :           Integer value
+//    Description :      Use to count the number of leaf nodes
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             23/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+int BinarySearchTree<T>::CountLeafR(BSTnode<T>* temp)
+{
+    if(temp == NULL)
+    {
+        return 0;
+    }
+
+    int count = 0;
+
+    if(temp->lchild == NULL && temp->rchild == NULL)
+    {
+        return 1;
+    }
+
+    return CountLeafR(temp->lchild) + CountLeafR(temp->rchild);
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//    Searching using Generic Approach
+///////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+class ArrayX
+{
+    public:
+
+        T *Arr;
+        int iSize;
+        bool Sorted;
+
+        ArrayX(T);
+        ~ArrayX();
+        void Accept();
+        void Display();
+        bool LinearSearch(T);
+        bool BiDirectionalSearch(T);
+        bool BinarySearch(T);
+};
+
+template<class T>
+ArrayX <T> :: ArrayX(T no)
+{
+    this->iSize = no;
+    Arr = new T [iSize];
+    this->Sorted = true;
+}
+
+template<class T>
+ArrayX <T> ::~ArrayX()
+{
+    delete []Arr;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Accept
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to accept the element of array
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             24/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: Accept()
+{
+    int iCnt = 0;
+    cout<<"Enter the elements\n";
+    cin>>Arr[iCnt];
+
+    for(iCnt = 1; iCnt < iSize; iCnt++)
+    {
+        cin>>Arr[iCnt];
+
+        if(Arr[iCnt - 1] > Arr[iCnt])
+        {
+            this->Sorted = false;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Display
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to Display element of array
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             24/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: Display()
+{
+    int iCnt = 0;
+
+    cout<<"Elements of Array are: \n";
+
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        cout<<Arr[iCnt]<<"\t";
+    }
+    cout<<"\n";
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    LinearSearch
+//    Input :            Data of the node
+//    Output :           Boolean
+//    Description :      Use to check element is present or not
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             24/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+bool ArrayX<T> :: LinearSearch(T no)
+{
+    bool bFlag = false;
+    int iCnt = 0;
+
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        if(Arr[iCnt] == no)
+        {
+            bFlag = true;
+            break;
+        }
+    }
+
+    return bFlag;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    BiDirectionalSearch
+//    Input :            Data of the node
+//    Output :           Boolean
+//    Description :      Use to check element is present or not
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             24/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+bool ArrayX <T> :: BiDirectionalSearch(T no)
+{
+    int iStart = 0;
+    int iEnd = 0;
+    bool bFlag = false;
+
+    for(iStart = 0,iEnd = iSize - 1;iStart <= iEnd; iStart++,iEnd--)
+    {
+        if((Arr[iStart] == no) || (Arr[iEnd] == no))
+        {
+            bFlag = true;
+            break;
+        }
+    }
+
+    return bFlag;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    BinarySearch
+//    Input :            Data of the node
+//    Output :           Boolean
+//    Description :      Use to check element is present or not
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             24/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+bool ArrayX<T> :: BinarySearch(T no)
+{
+    if(Sorted == false)
+    {
+        return BiDirectionalSearch(no);
+    }
+
+    int iStart = 0, iEnd = 0, iMid = 0;
+    bool bFlag = false;
+
+    iStart = 0;
+    iEnd = iSize - 1;
+
+    while(iStart <= iEnd)
+    {
+        iMid = iStart + ((iEnd - iStart) / 2);
+
+        if(Arr[iMid] == no)
+        {
+            bFlag = true;
+            break;
+        }
+        else if(no < Arr[iMid])
+        {
+            iEnd = iMid - 1;
+        }
+        else if(no > Arr[iMid])
+        {
+            iStart = iMid + 1;
+        }
+    }
+    return bFlag;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//    Sorting using Generic Approach
+///////////////////////////////////////////////////////////////////////////////
+
+#define INC_ORDER 1
+#define DEC_ORDER 2
+
+template<class T>
+class ArrayX
+{
+    public:
+        T *Arr;
+        int iSize;
+        bool Sorted;
+
+    ArrayX(int no);
+    ~ArrayX();
+
+    void Accept();
+    void Display();
+
+    void BubbleSort();
+    void BubbleSortEfficient(int iOption);
+
+    void SelectionSort();
+
+    void InsertionSort();
+};
+
+template<class T>
+ArrayX <T> ::ArrayX(int no)
+{
+    iSize = no;
+    Arr = new T [iSize];
+    Sorted = true;
+}
+
+template<class T>
+ArrayX <T> ::~ArrayX()
+{
+    delete []Arr;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Accept
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to Accept the element of array
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: Accept()
+{
+    int iCnt = 0;
+    cout<<"Enter the elements : \n";
+    cin>>Arr[iCnt];
+
+    for(iCnt = 1; iCnt < iSize; iCnt++)
+    {
+        cin>>Arr[iCnt];
+
+        if(Arr[iCnt -1] > Arr[iCnt])
+        {
+            Sorted = false;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    Display
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to Display element of array
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: Display()
+{
+    int iCnt = 0;
+
+    cout<<"Elements of the array are : \n";
+
+    for(iCnt = 0; iCnt < iSize; iCnt++)
+    {
+        cout<<Arr[iCnt]<<"\t";
+    }
+    cout<<"\n";
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    BubbleSort
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to sort the given elements inti Ascending order
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: BubbleSort()
+{
+    if(Sorted == true)
+    {
+        return;
+    }
+
+    int i  = 0, j = 0, temp = 0;
+
+    for(i = 0; i < iSize - 1; i++)
+    {
+        for(j = 0; j < iSize - 1 - i;j++)
+        {
+            if(Arr[j] > Arr[j + 1])
+            {
+                temp = Arr[j];
+                Arr[j] = Arr[j + 1];
+                Arr[j + 1] = temp;
+            }
+        }
+    }
+
+    Sorted = true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    BubbleSortEfficient
+//    Input :            Integer value
+//    Output :           Nothing
+//    Description :      Use to sort the given array in ascending or Descending based on option
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: BubbleSortEfficient(int Option)
+{
+    if(Sorted == true)
+    {
+        return;
+    }
+
+    if(Option < INC_ORDER || Option > DEC_ORDER)
+    {
+        cout<<"Invalid Option for Sorting\n";
+        cout<<"1 : Increasing\n";
+        cout<<"2 : Decreasing\n";
+        return;
+    }
+
+    int i = 0, j = 0, temp = 0;
+    bool bFlag = false;
+
+    bFlag = true;
+
+    if(Option == INC_ORDER)
+    {
+        for(i = 0; ((i < iSize - 1) && bFlag == true); i++)
+        {
+            bFlag = false;
+
+            for(j = 0; j < iSize - 1-i; j++)
+            {
+                if(Arr[j + 1] < Arr[j])
+                {
+                    temp = Arr[j];
+                    Arr[j] = Arr[j + 1];
+                    Arr[j + 1] = temp;
+
+                    bFlag = true;
+                }
+            }
+        }
+    }
+    else if(Option == DEC_ORDER)
+    {
+        for(i = 0; ((i < iSize - 1) && bFlag == true); i++)
+        {
+            bFlag = false;
+
+            for(j = 0; j < iSize - 1-i; j++)
+            {
+                if(Arr[j + 1] > Arr[j])
+                {
+                    temp = Arr[j];
+                    Arr[j] = Arr[j + 1];
+                    Arr[j + 1] = temp;
+
+                    bFlag = true;
+                }
+            }
+        }
+    }
+
+    Sorted = true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    SelectionSort
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to sort the given array into Ascending order
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: SelectionSort()
+{
+    if(Sorted == true)
+    {
+        cout<<"Array is already sortedn";
+        return;
+    }
+
+    int i = 0, j = 0, temp = 0;
+    int min_index = 0;
+
+    for(i = 0; i < iSize - 1; i++)
+    {
+        min_index = i;
+        for(j = i + 1; j < iSize; j++)
+        {
+            if(Arr[j] < Arr[min_index])
+            {
+                min_index = j;
+            }
+
+            temp = Arr[i];
+            Arr[i] = Arr[min_index];
+            Arr[min_index] = temp;
+        }
+    }
+
+    Sorted = true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//
+//    Function Name :    InsertionSort
+//    Input :            Nothing
+//    Output :           Nothing
+//    Description :      Use to sort the given array into Ascending order
+//    Author :           Ashwini Vishnu Kauthale
+//    Data :             25/02/2026
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+void ArrayX <T> :: InsertionSort()
+{
+    int i = 0, j = 0, Selected = 0;
+
+    for(i = 1; i < iSize; i++)
+    {
+        for(j = i - 1,Selected = Arr[i]; (j >= 0 && Selected < Arr[j]); j--)
+        {
+            Arr[j + 1] = Arr[j];
+        }
+
+        Arr[j + 1] = Selected;
+    }
+
+    Sorted = true;
+}
+
 //////////////////////////////////  End of Library  //////////////////////////////////////////
 
 int main()
@@ -1858,5 +2675,133 @@ int main()
 
     delete qobj;
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    cout<<"\n--------------- Binary Search Tree ----------------\n\n";
+
+    BinarySearchTree<int> *BSTobj = new BinarySearchTree<int>();
+
+    int iRet = 0;
+
+    BSTobj->Insert(21);
+    BSTobj->Insert(11);
+    BSTobj->Insert(51);
+    BSTobj->Insert(67);
+    BSTobj->Insert(40);
+    BSTobj->Insert(10);
+    BSTobj->Insert(13);
+    BSTobj->Insert(38);
+
+    cout<<"Inorder Traversal :";
+    BSTobj->Inorder();
+
+    cout<<"\n\n";
+
+    cout<<"Inorder Traversal :";
+    BSTobj->Preorder();
+
+    cout<<"\n\n";
+
+    cout<<"Inorder Traversal :";
+    BSTobj->Postorder();
+
+    cout<<"\n\n";
+    
+    cout<<"Number of BSTnodes are :"<<BSTobj->Count();
+
+    cout<<"\n\n";
+
+    cout<<"Number of Parent BSTnodes are :"<<BSTobj->CountParentBSTnode();
+
+    cout<<"\n\n";
+
+    cout<<"Number of Child BSTnodes are :"<<BSTobj->CountChildBSTnode();
+
+    delete BSTobj;
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    cout<<"\n----------------------- Searching -------------------\n\n";
+    int iValue = 0;
+    float fNo = 0;
+
+    cout<<"Enter the number of elements\n";
+    cin>>iValue;
+
+    cout<<"Enter the element that you want to find\n";
+    cin>>fNo;
+
+    ArrayX <float> * axobj = new ArrayX<float>(iValue);
+
+    axobj->Accept();
+
+    axobj->Display();
+
+    cout<<"\n";
+
+    if(axobj->LinearSearch(fNo))
+    {
+        cout<<"Element is present\n";
+    }
+    else
+    {
+        cout<<"There is no such element\n";
+    }
+
+    cout<<"\n";
+
+    if(axobj->BiDirectionalSearch(fNo))
+    {
+        cout<<"Element is present\n";
+    }
+    else
+    {
+        cout<<"There is no such element\n";
+    }
+
+    cout<<"\n";
+
+    if(axobj->BinarySearch(fNo))
+    {
+        cout<<"Element is present\n";
+    }
+    else
+    {
+        cout<<"There is no such element\n";
+    }
+
+    delete axobj;
+    
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    cout<<"\n---------------------- Sorting--------------------\n\n";
+
+    int iValue = 0;
+    cout<<"Enter the number of elements : \n";
+    cin>>iValue;
+
+    ArrayX <int> *sortobj = new ArrayX<int>(iValue);
+
+    sortobj->Accept();
+
+    sortobj->Display();
+
+    sortobj->BubbleSort();
+
+    //  1 : Increasing
+    //  2 : Decreasing
+
+    sortobj->BubbleSortEfficient(INC_ORDER);
+
+
+    sortobj->SelectionSort();
+
+    sortobj->InsertionSort();
+
+    cout<<"Data After sorting\n";
+    
+    sortobj->Display();
+
+    delete sortobj;
     return 0;
 }
