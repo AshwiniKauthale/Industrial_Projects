@@ -28,6 +28,19 @@ C++ Programming
 ◦ Stack (LIFO) 
 ◦ Queue (FIFO) 
 
+#### Non Linear Data Structure
+◦ Binary Search Tree(BST)
+#### Searching
+◦ Linear Search
+◦ Bidirectional Search
+◦ Binary Search
+
+#### Sorting
+◦ Bubble Sort
+◦ Efficient Bubble sort
+◦ Insertion sort
+◦ Selection sort
+
 #### Generic Implementation
 
 ◦ Uses C++ templates for data type independence. 
