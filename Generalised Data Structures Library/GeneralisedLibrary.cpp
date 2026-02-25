@@ -2171,15 +2171,15 @@ bool ArrayX<T> :: BinarySearch(T no)
 #define DEC_ORDER 2
 
 template<class T>
-class ArrayX
+class ArrayXX
 {
     public:
         T *Arr;
         int iSize;
         bool Sorted;
 
-    ArrayX(int no);
-    ~ArrayX();
+    ArrayXX(int no);
+    ~ArrayXX();
 
     void Accept();
     void Display();
@@ -2193,7 +2193,7 @@ class ArrayX
 };
 
 template<class T>
-ArrayX <T> ::ArrayX(int no)
+ArrayXX <T> ::ArrayXX(int no)
 {
     iSize = no;
     Arr = new T [iSize];
@@ -2201,7 +2201,7 @@ ArrayX <T> ::ArrayX(int no)
 }
 
 template<class T>
-ArrayX <T> ::~ArrayX()
+ArrayXX <T> ::~ArrayXX()
 {
     delete []Arr;
 }
@@ -2218,7 +2218,7 @@ ArrayX <T> ::~ArrayX()
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: Accept()
+void ArrayXX <T> :: Accept()
 {
     int iCnt = 0;
     cout<<"Enter the elements : \n";
@@ -2247,7 +2247,7 @@ void ArrayX <T> :: Accept()
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: Display()
+void ArrayXX <T> :: Display()
 {
     int iCnt = 0;
 
@@ -2272,7 +2272,7 @@ void ArrayX <T> :: Display()
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: BubbleSort()
+void ArrayXX <T> :: BubbleSort()
 {
     if(Sorted == true)
     {
@@ -2309,7 +2309,7 @@ void ArrayX <T> :: BubbleSort()
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: BubbleSortEfficient(int Option)
+void ArrayXX <T> :: BubbleSortEfficient(int Option)
 {
     if(Sorted == true)
     {
@@ -2383,7 +2383,7 @@ void ArrayX <T> :: BubbleSortEfficient(int Option)
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: SelectionSort()
+void ArrayXX <T> :: SelectionSort()
 {
     if(Sorted == true)
     {
@@ -2425,7 +2425,7 @@ void ArrayX <T> :: SelectionSort()
 /////////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-void ArrayX <T> :: InsertionSort()
+void ArrayXX <T> :: InsertionSort()
 {
     int i = 0, j = 0, Selected = 0;
 
@@ -2780,7 +2780,7 @@ int main()
     cout<<"Enter the number of elements : \n";
     cin>>iValue;
 
-    ArrayX <int> *sortobj = new ArrayX<int>(iValue);
+    ArrayXX <int> *sortobj = new ArrayXX<int>(iValue);
 
     sortobj->Accept();
 
