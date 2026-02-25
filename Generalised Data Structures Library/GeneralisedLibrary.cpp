@@ -2387,7 +2387,6 @@ void ArrayXX <T> :: SelectionSort()
 {
     if(Sorted == true)
     {
-        cout<<"Array is already sortedn";
         return;
     }
 
@@ -2776,11 +2775,11 @@ int main()
 
     cout<<"\n---------------------- Sorting--------------------\n\n";
 
-    int iValue = 0;
+    int iVal = 0;
     cout<<"Enter the number of elements : \n";
-    cin>>iValue;
+    cin>>iVal;
 
-    ArrayXX <int> *sortobj = new ArrayXX<int>(iValue);
+    ArrayXX <int> *sortobj = new ArrayXX<int>(iVal);
 
     sortobj->Accept();
 
