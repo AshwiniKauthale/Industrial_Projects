@@ -22,24 +22,24 @@ C++ Programming
 
 #### Linear Data Structure
 ##### ◦ Singly Linear Linked List 
-◦ Singly Circular Linked List 
-◦ Doubly Linear Linked List 
-◦ Doubly Circular Linked List 
-◦ Stack (LIFO) 
-◦ Queue (FIFO) 
+##### ◦ Singly Circular Linked List 
+##### ◦ Doubly Linear Linked List 
+##### ◦ Doubly Circular Linked List 
+##### ◦ Stack (LIFO) 
+##### ◦ Queue (FIFO) 
 
 #### Non Linear Data Structure
-◦ Binary Search Tree(BST)
+##### ◦ Binary Search Tree(BST)
 #### Searching
-◦ Linear Search
-◦ Bidirectional Search
-◦ Binary Search
+##### ◦ Linear Search
+##### ◦ Bidirectional Search
+##### ◦ Binary Search
 
 #### Sorting
-◦ Bubble Sort
-◦ Efficient Bubble sort
-◦ Insertion sort
-◦ Selection sort
+##### ◦ Bubble Sort
+##### ◦ Efficient Bubble sort
+##### ◦ Insertion sort
+##### ◦ Selection sort
 
 #### Generic Implementation
 
