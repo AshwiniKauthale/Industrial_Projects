@@ -84,7 +84,7 @@ class PackerX
         {
             fiobj.close();
             foobj.close();
-            LogObj.close();
+            Logobj.close();
         }
         catch(IOException aobj)
         {
