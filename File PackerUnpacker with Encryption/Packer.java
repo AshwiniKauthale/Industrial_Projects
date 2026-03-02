@@ -60,7 +60,7 @@ class PackerX
 
         this.fobj = null;
         this.PackObj = null;
-        this.LogObj = null;
+        this.Logobj = null;
         this.fiobj = null;
         this.foobj = null;
 
@@ -137,9 +137,12 @@ class PackerX
                 
                 System.out.println("Number of files in the folder are : "+fArr.length);
 
+                int fileCount = 0;
+                long totalSize = 0;
+
                 // Create Log File in system directory
-                LogObj = new File("Log.txt");
-                logWriter = new FileWriter(LogObj);
+                Logobj = new File("Log.txt");
+                logWriter = new FileWriter(Logobj);
 
                 for(i = 0; i < fArr.length; i++)
                 {
