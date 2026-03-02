@@ -30,8 +30,10 @@ class PackerX
 
     public File fobj;
     File PackObj;
+    File Logobj;
     public FileInputStream fiobj;
     public FileOutputStream foobj;
+    public FileWriter logWriter;
 
     Scanner sobj;
 
@@ -58,6 +60,7 @@ class PackerX
 
         this.fobj = null;
         this.PackObj = null;
+        this.LogObj = null;
         this.fiobj = null;
         this.foobj = null;
 
@@ -81,6 +84,7 @@ class PackerX
         {
             fiobj.close();
             foobj.close();
+            LogObj.close();
         }
         catch(IOException aobj)
         {
@@ -133,6 +137,10 @@ class PackerX
                 
                 System.out.println("Number of files in the folder are : "+fArr.length);
 
+                // Create Log File in system directory
+                LogObj = new File("Log.txt");
+                logWriter = new FileWriter(LogObj);
+
                 for(i = 0; i < fArr.length; i++)
                 {
                     fiobj = new FileInputStream(fArr[i]);
@@ -162,9 +170,21 @@ class PackerX
 
                             //Write the files data into Pack file
                             foobj.write(Buffer,0,iRet);
+
+                            // Maintain log of each packed file
+                            logWriter.write("File Name : " + fArr[i].getName() + 
+                                            " | Size : " + fArr[i].length() + " bytes\n");
+    
+                            totalSize += fArr[i].length();
+                            fileCount++;
                         }
                     }
                 }
+
+                // Packing Report
+                System.out.println("Packing completed successfully");
+                System.out.println("Total files packed : " + fileCount);
+                System.out.println("Total data packed  : " + totalSize + " bytes");
             }
             else
             {
