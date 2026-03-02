@@ -123,6 +123,8 @@ class UnpackerX
         {
             fiobj = new FileInputStream(fpackobj);
 
+             int fileCount = 0;
+
             // Read the Header
             while((iRet = fiobj.read(bHeader,0,100)) != -1)
             {
@@ -156,7 +158,13 @@ class UnpackerX
                 }
                 // Write into extracted file
                 foobj.write(Buffer,0,FileSize);
+
+                fileCount++;
             }
+
+            // Unpacking Report
+            System.out.println("Unpacking completed successfully");
+            System.out.println("Total files unpacked : " + fileCount);
         }
         catch(IOException aobj)
         {
