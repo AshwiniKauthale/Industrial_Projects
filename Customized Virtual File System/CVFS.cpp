@@ -22,7 +22,7 @@
 
 #define MAXOPENFILES 20
 
-#define MAXINODE 10
+#define MAXINODE 5
 
 #define READ 1
 #define WRITE 2
@@ -931,26 +931,28 @@ int main()
                     printf("Please refer man page\n");
                 }
 
-                if(iRet == ERR_NO_INODES)
+                else if(iRet == ERR_NO_INODES)
                 {
                     printf("Error : Unable to create the file as there is no inodes\n");
                 }
 
-                if(iRet == ERR_FILE_ALREADY_EXIST)
+                else if(iRet == ERR_FILE_ALREADY_EXIST)
                 {
                     printf("Error : Unable to create the file because file is already present\n");
                 }
 
-                if(iRet == ERR_MAX_FILES_OPEN)
+                else if(iRet == ERR_MAX_FILES_OPEN)
                 {
                     printf("Error : Unable to create the file\n");
                     printf("Max opened file limit reached\n");
                 }
-
-                printf("File gets succesfully created with FD %d\n",iRet);
+                else 
+                {
+                     printf("File gets succesfully created with FD %d\n",iRet);
+                }
             }
             // Ashwini CVFS : > read 3 10
-            if(strcmp("read",Command[0]) == 0)
+            else if(strcmp("read",Command[0]) == 0)
             {
                 EmptyBuffer= (char *)malloc(sizeof(atoi(Command[2])));
 
